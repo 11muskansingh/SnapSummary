@@ -72,75 +72,65 @@
   flex-wrap: wrap;
 }
 
-/* Features Section */
-.features-section {
-  padding: var(--spacing-3xl);
-  /* background-color: var(--surface-color); */
+/* How It Works Section */
+.how-it-works-section {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--surface-color);
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: var(--spacing-2xl);
-  color: var(--text-primary);
-}
-
-.features-grid {
+.steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-xl);
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.feature-card {
+.step-card {
   background: var(--background-color);
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
   text-align: center;
-  box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   transition: all var(--transition-normal);
   position: relative;
-  overflow: hidden;
 }
 
-.feature-card::before {
-  content: '';
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-number {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-  transform: scaleX(0);
-  transition: transform var(--transition-normal);
+  top: -15px;
+  left: -15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 3px solid var(--surface-color);
 }
 
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
-
-.feature-card:hover::before {
-  transform: scaleX(1);
-}
-
-.feature-icon {
-  font-size: 3rem;
+.step-icon {
+  color: var(--primary-color);
   margin-bottom: var(--spacing-md);
-  display: block;
 }
 
-.feature-card h3 {
-  font-size: 1.5rem;
+.step-card h3 {
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
 }
 
-.feature-card p {
+.step-card p {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 0;

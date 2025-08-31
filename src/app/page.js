@@ -33,45 +33,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="features-section">
+      <section className="how-it-works-section">
         <div className="container">
-          <h2 className="section-title">Core Features</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FileText size={32} />
+          <h2 className="section-title">How It Works</h2>
+          <div className="steps-grid">
+            <div className="step-card">
+              <div className="step-number">1</div>
+              <div className="step-icon">
+                <FileText size={40} />
               </div>
-              <h3>Versatile Uploads</h3>
-              <p>Upload PDFs, DOCX, or simply paste text to get started.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Cpu size={32} />
-              </div>
-              <h3>Advanced AI</h3>
+              <h3>Upload Your Document</h3>
               <p>
-                Our models are trained to understand context and extract key
-                information.
+                Drag and drop your file (PDF, DOCX, TXT) or paste the content
+                directly.
               </p>
             </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Zap size={32} />
+            <div className="step-card">
+              <div className="step-number">2</div>
+              <div className="step-icon">
+                <Cpu size={40} />
               </div>
-              <h3>Blazing Fast</h3>
+              <h3>AI-Powered Analysis</h3>
               <p>
-                Receive your summaries in seconds, thanks to our optimized
-                infrastructure.
+                Our intelligent system analyzes the content, identifying key
+                points and main ideas.
               </p>
             </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Star size={32} />
+            <div className="step-card">
+              <div className="step-number">3</div>
+              <div className="step-icon">
+                <Zap size={40} />
               </div>
-              <h3>High Quality</h3>
+              <h3>Get Your Summary</h3>
               <p>
-                Get human-like summaries that are accurate and easy to
-                understand.
+                Receive a concise, easy-to-read summary in just a few seconds.
               </p>
             </div>
           </div>

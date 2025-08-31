@@ -320,24 +320,29 @@ export default function SummarizePage() {
           <div className="container">
             <div className="summarize-content upload-layout">
               <div className="upload-content-left">
-                <h1 className="summarize-title">Upload Your Document</h1>
+                <h1 className="summarize-title">
+                  Summarize Your Documents with AI
+                </h1>
                 <p className="summarize-description">
-                  Drop your document here or click to browse. Supports PDF,
-                  Word, images, text, markdown, and more. Our AI will analyze
-                  and create an intelligent summary for you.
+                  Simply upload your file and get a quick, easy-to-read summary.
+                  We support PDF, DOCX, TXT, and even images.
                 </p>
                 <div className="upload-features">
                   <div className="feature-item">
-                    <span className="feature-icon">📄</span>
-                    <span>PDF, Word, Text files</span>
+                    <img
+                      src="/file-check.svg"
+                      alt="Supports file types"
+                      className="feature-icon"
+                    />
+                    <span>Supports PDF, DOCX, TXT & Images</span>
                   </div>
                   <div className="feature-item">
-                    <span className="feature-icon">🖼️</span>
-                    <span>Images with text</span>
-                  </div>
-                  <div className="feature-item">
-                    <span className="feature-icon">⚡</span>
-                    <span>Fast AI processing</span>
+                    <img
+                      src="/globe.svg"
+                      alt="Powered by Google AI"
+                      className="feature-icon"
+                    />
+                    <span>Powered by Google AI</span>
                   </div>
                 </div>
               </div>
@@ -353,117 +358,60 @@ export default function SummarizePage() {
       {currentStep === "configure" && animationData && (
         <section className="summarize-hero">
           <div className="container">
-            <div className="summarize-content configure-layout">
-              <div className="configure-content-left">
-                <h1 className="summarize-title">Choose Summary Length</h1>
-                <p className="summarize-description">
-                  Select how detailed you want your AI summary to be. Our AI
-                  will analyze your document and create the perfect summary
-                  length for your needs.
-                </p>
+            <div className="summarize-content configure-layout-new">
+              <button
+                className="back-button"
+                onClick={() => setCurrentStep("upload")}
+              >
+                <img src="/arrow-left.svg" alt="Back" />
+                <span>Upload Another File</span>
+              </button>
 
-                <div className="file-preview">
-                  <div className="file-icon-display">
-                    <span className="file-type-icon">
-                      {animationData.fileData?.type === "application/pdf" &&
-                        "📄"}
-                      {animationData.fileData?.type?.startsWith("image/") &&
-                        "🖼️"}
-                      {(animationData.fileData?.type?.startsWith("text/") ||
-                        animationData.fileData?.type === "application/json") &&
-                        "📝"}
-                      {!animationData.fileData?.type?.startsWith(
-                        "application/pdf"
-                      ) &&
-                        !animationData.fileData?.type?.startsWith("image/") &&
-                        !animationData.fileData?.type?.startsWith("text/") &&
-                        animationData.fileData?.type !== "application/json" &&
-                        "📎"}
-                    </span>
-                  </div>
-                  <div className="file-details-compact">
-                    <span
-                      className="file-name-truncated"
-                      title={animationData.fileName}
-                    >
-                      {truncateFileName(animationData.fileName)}
-                    </span>
-                    <span className="file-size-compact">
-                      {Math.round(animationData.fileSize / 1024)} KB
-                    </span>
-                  </div>
-                </div>
-
-                <div className="summary-benefits">
-                  <div className="benefit-item">
-                    <span className="benefit-icon">⚡</span>
-                    <span>Lightning fast processing</span>
-                  </div>
-                  <div className="benefit-item">
-                    <span className="benefit-icon">🎯</span>
-                    <span>Intelligent key point extraction</span>
-                  </div>
-                  <div className="benefit-item">
-                    <span className="benefit-icon">📊</span>
-                    <span>Structured and organized output</span>
-                  </div>
-                </div>
-
-                <div className="configure-actions">
-                  <button
-                    className="btn btn--outline btn--small back-btn"
-                    onClick={() => setCurrentStep("upload")}
-                  >
-                    ← Choose Different File
-                  </button>
+              <div className="file-display-card">
+                <img src="/paperclip.svg" alt="File" className="file-icon" />
+                <div className="file-info">
+                  <span className="file-name" title={animationData.fileName}>
+                    {truncateFileName(animationData.fileName, 20)}
+                  </span>
+                  <span className="file-size">
+                    {Math.round(animationData.fileSize / 1024)} KB
+                  </span>
                 </div>
               </div>
 
-              <div className="configure-content-right">
-                <div className="summary-options-vertical">
-                  <button
-                    className={`summary-option-card ${
-                      summaryLength === "short" ? "active" : ""
-                    }`}
-                    onClick={() => startProcessing("short")}
-                  >
-                    <div className="option-content">
-                      <div className="option-icon">⚡</div>
-                      <div className="option-info">
-                        <h3>Short</h3>
-                        <p>Quick overview (2-3 sentences)</p>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className={`summary-option-card ${
-                      summaryLength === "medium" ? "active" : ""
-                    }`}
-                    onClick={() => startProcessing("medium")}
-                  >
-                    <div className="option-content">
-                      <div className="option-icon">📝</div>
-                      <div className="option-info">
-                        <h3>Medium</h3>
-                        <p>Comprehensive summary (1-2 paragraphs)</p>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className={`summary-option-card ${
-                      summaryLength === "long" ? "active" : ""
-                    }`}
-                    onClick={() => startProcessing("long")}
-                  >
-                    <div className="option-content">
-                      <div className="option-icon">📋</div>
-                      <div className="option-info">
-                        <h3>Long</h3>
-                        <p>Detailed analysis (3-4 paragraphs)</p>
-                      </div>
-                    </div>
-                  </button>
-                </div>
+              <h1 className="summarize-title">Choose Summary Length</h1>
+              <p className="summarize-description">
+                Select how detailed you want your summary to be.
+              </p>
+
+              <div className="summary-options-grid">
+                <button
+                  className={`summary-option-card ${
+                    summaryLength === "short" ? "active" : ""
+                  }`}
+                  onClick={() => startProcessing("short")}
+                >
+                  <h3>Quick Glance</h3>
+                  <p>A few sentences.</p>
+                </button>
+                <button
+                  className={`summary-option-card ${
+                    summaryLength === "medium" ? "active" : ""
+                  }`}
+                  onClick={() => startProcessing("medium")}
+                >
+                  <h3>Key Details</h3>
+                  <p>A structured summary.</p>
+                </button>
+                <button
+                  className={`summary-option-card ${
+                    summaryLength === "long" ? "active" : ""
+                  }`}
+                  onClick={() => startProcessing("long")}
+                >
+                  <h3>In-Depth Analysis</h3>
+                  <p>A comprehensive overview.</p>
+                </button>
               </div>
             </div>
           </div>
@@ -475,31 +423,17 @@ export default function SummarizePage() {
         <section className="summarize-hero">
           <div className="container">
             <div className="summarize-content">
-              <h1 className="summarize-title">
-                Processing {animationData.fileName}
-              </h1>
-              {processingStage && (
-                <p
-                  className="processing-stage-text"
-                  data-retry={
-                    processingStage.includes("Retry") ||
-                    processingStage.includes("retrying")
-                  }
-                >
-                  {processingStage}
-                </p>
-              )}
-
-              <div className="file-info">
-                <div className="file-details">
-                  <strong>{animationData.fileName}</strong>
-                  <span>{Math.round(animationData.fileSize / 1024)} KB</span>
-                </div>
-              </div>
+              <h1 className="summarize-title">Analyzing Your Document...</h1>
+              <p className="summarize-description">
+                Our AI is reading, understanding, and summarizing your file.
+                This should only take a moment.
+              </p>
 
               <div className="processing-indicator">
                 <div className="spinner"></div>
-                <p>Generating {summaryLength} summary...</p>
+                <p className="processing-stage-text">
+                  {processingStage || "Generating summary..."}
+                </p>
               </div>
             </div>
           </div>
@@ -537,7 +471,7 @@ export default function SummarizePage() {
                     onClick={() => regenerateSummary("short")}
                     disabled={isProcessing}
                   >
-                    Short
+                    Quick Glance
                   </button>
                   <button
                     className={`btn btn--small ${
@@ -548,7 +482,7 @@ export default function SummarizePage() {
                     onClick={() => regenerateSummary("medium")}
                     disabled={isProcessing}
                   >
-                    Medium
+                    Key Details
                   </button>
                   <button
                     className={`btn btn--small ${
@@ -557,7 +491,7 @@ export default function SummarizePage() {
                     onClick={() => regenerateSummary("long")}
                     disabled={isProcessing}
                   >
-                    Long
+                    In-Depth
                   </button>
                 </div>
                 <button
